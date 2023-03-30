@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.chillrainqcna.mapper.UserMapper">
+
+    <insert id="insUser" >
+        INSERT INTO t_user VALUES (NULL, #{username}, #{password}, 0,  #{salt})
+    </insert>
+    <select id="selSalt" resultType="java.lang.String">
+        SELECT salt FROM t_user WHERE username = #{username}
+    </select>
+    <select id="selUser" resultType="club.chillrainqcna.bean.User">
+        SELECT * FROM t_user WHERE username = #{username} AND password = #{password}
+    </select>
+    <select id="selUserByUserName" resultType="club.chillrainqcna.bean.User">
+        SELECT * FROM t_user WHERE username = #{username}
+    </select>
+</mapper>
